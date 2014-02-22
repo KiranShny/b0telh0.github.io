@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FreeBSD Hardening">
+    <meta name="author" content="@b0telh0">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>bsdhard.com.br</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="sticky-footer-navbar.css" rel="stylesheet">
+
+    <!-- Load navbar -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script> 
+    $(function(){
+      $("#includedContent").load("bar.html"); 
+    });
+    </script>
+
+  </head>
+
+  <body>
+
+    <div id="includedContent"></div>
+
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h3>Chkrootkit</h3>
+      </div>
+      <p><strong>--------------------------------------------------------------<br>
+Chkrootkit is a tool to locally check for signs of a rootkit.<br>
+ -------------------------------------------------------------</strong><br><br>
+
+~# <code>cd /usr/ports/security/chkrootkit/</code><br>
+~# /usr/ports/security/chkrootkit#<br>
+~# /usr/ports/security/chkrootkit# <code>make install clean</code><br>
+~# /usr/ports/security/chkrootkit# <code>rehash</code><br>
+~# /usr/ports/security/chkrootkit# <code>chkrootkit -V</code><br>
+chkrootkit version 0.48<br><br>
+
+~# Criar script no periodic:<br>
+~# <code>cd /usr/local/etc/periodic/security</code><br>
+~# <code>: > 420.chkrootkit</code><br><br>
+
+<strong>#!/bin/sh<br>
+#       daily_chkrootkit_check_enable="YES"<br>
+#<br><br>
+
+if [ -r /etc/defaults/periodic.conf ]; then<br>
+   . /etc/defaults/periodic.conf<br>
+   source_periodic_confs<br>
+fi<br><br>
+
+case "$daily_chkrootkit_check_enable" in<br>
+  [Yy][Ee][Ss])<br><br>
+
+        echo ""<br>
+        echo "Running chkrootkit..."<br>
+        echo ""<br>
+        /usr/local/sbin/chkrootkit<br>
+        ;;<br>
+esac</strong><br><br>
+
+~# Edite o /etc/defaults/periodic.conf<br>
+~# E dentro de “Security” coloque:<br><br>
+
+<strong># 420.chkrootkit<br>
+daily_chkrootkit_check_enable="YES"</strong></p>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted"><a href="https://bitbucket.org/leonardobotelho/bsdhard">bitbucket.org/leonardobotelho/bsdhard</a></p>
+      </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
