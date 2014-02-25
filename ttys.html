@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FreeBSD Hardening">
+    <meta name="author" content="@b0telh0">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>bsdhard.com.br</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="sticky-footer-navbar.css" rel="stylesheet">
+
+    <!-- Prettify -->
+    <link href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" rel="stylesheet">
+    <script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
+
+    <!-- Load navbar -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script> 
+    $(function(){
+      $("#includedContent").load("bar.html"); 
+    });
+    </script>
+
+    <script type="text/javascript">
+    (function(jQuery){
+      jQuery( document ).ready( function() {
+        prettyPrint();
+      } );
+    }(jQuery))
+    </script>
+
+  </head>
+
+  <body>
+
+    <div id="includedContent"></div>
+
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h3>Protegendo os terminais</h3>
+      </div>
+      <p>
+~# edite o arquivo /etc/ttys e substitua <strong>secure</strong> por <strong>insecure</strong><br><br>
+
+<pre class="prettyprint linenums">
+console none                            unknown off  insecure<br>
+ttyv0   "/usr/libexec/getty Pc"         cons25  on  insecure<br>
+ttyv1   "/usr/libexec/getty Pc"         cons25  on  insecure<br>
+ttyv2   "/usr/libexec/getty Pc"         cons25  on  insecure<br>
+ttyv3   "/usr/libexec/getty Pc"         cons25  on  insecure<br>
+ttyv4   "/usr/libexec/getty Pc"         cons25  on  insecure<br>
+ttyv5   "/usr/libexec/getty Pc"         cons25  on  insecure<br>
+ttyv6   "/usr/libexec/getty Pc"         cons25  on  insecure<br>
+ttyv7   "/usr/libexec/getty Pc"         cons25  on  insecure<br>
+</pre>
+
+<br>
+~# Agora quando você entrar em single-user mode, será solicitada a senha do root e nos terminais será necessário entrar com outro usuário desprivilegiado antes de logar como root.<br><br><br>
+</p>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted"><a href="https://bitbucket.org/leonardobotelho/bsdhard">bitbucket.org/leonardobotelho/bsdhard</a></p>
+      </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
