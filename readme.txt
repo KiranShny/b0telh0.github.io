@@ -1,1 +1,1 @@
-Repositorio do projeto bsdhard.com.br
+Repositório do projeto bsdhard.com.br
