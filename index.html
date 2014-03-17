@@ -15,12 +15,26 @@
 
     <!-- Custom styles for this template -->
     <link href="sticky-footer-navbar.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/FeedEk.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/FeedEk.js"></script>
 
     <!-- Load navbar -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script> 
     $(function(){
-      $("#includedContent").load("bar.html"); 
+      $("#includedContent").load("bar.html");
+    });
+    </script>
+
+    <!-- Load feed -->
+    <script>
+    $(function(){
+      $('#divRss').FeedEk({
+        FeedUrl : 'https://bitbucket.org/leonardobotelho/bsdhard/rss',
+        MaxCount : 4,
+        ShowDesc : false,
+      });
     });
     </script>
 
@@ -36,6 +50,9 @@
         <h1>FreeBSD Hardening</h1>
       </div>
       <p class="lead">O bsdhard.com.br surgiu da idéia de compartilhar informaçōes sobre segurança no FreeBSD. <br>Hardening, aplicaçōes de terceiros mais comuns e utilização de ferramentas para pen test no sistema serão alguns dos assuntos que poderemos contribuir para a comunidade.</p>
+      <br>
+      <div id="divRss"></div>
+      <br><br>
     </div>
 
     <div id="footer">
