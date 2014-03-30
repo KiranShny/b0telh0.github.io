@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FreeBSD Hardening">
+    <meta name="author" content="@b0telh0">
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <title>bsdhard.com.br</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="sticky-footer-navbar.css" rel="stylesheet">
+
+    <!-- Load navbar -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script> 
+    $(function(){
+      $("#includedContent").load("bar.html"); 
+    });
+    </script>
+
+  </head>
+
+  <body>
+
+    <div id="includedContent"></div>
+
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h3>Rkhunter</h3>
+      </div>
+      <p>--------------------------------------------------------------<br>
+        Rootkit Hunter is scanning tool to ensure you for about 99.9%<br>
+        you're clean of nasty tools.<br>
+        --------------------------------------------------------------<br><br>
+
+~# <code>cd /usr/ports/security/rkhunter/</code><br>
+~# /usr/ports/security/rkhunter# <code>make install clean</code><br>
+~# /usr/ports/security/rkhunter# <code>rehash</code><br><br>
+
+~# Editar o arquivo /etc/defaults/periodic.conf e adicionar:<br><br>
+<strong>
+  # 415.rkhunter<br>
+  daily_rkhunter_update_enable="YES"<br>
+  daily_rkhunter_check_enable="YES"<br>
+</strong><br>
+
+~# Edite o arquivo /usr/local/etc/rkhunter.conf e altere as seguintes opções ou ajuste conforme o seu ambiente:<br><br>
+
+<strong>
+MAIL-ON-WARNING="root@localhost"<br>
+ALLOW_SSH_ROOT_USER=no<br>
+PKGMGR=BSD<br>
+SCAN_MODE_DEV=THOROUGH<br>
+#UID0_ACCOUNTS="toor"<br>
+ALLOWHIDDENDIR=/usr/.snap<br>
+DISABLE_TESTS="packet_cap_apps"<br>
+SUSPSCAN_DIRS=”/tmp /usr/local/www”<br>
+#TMPDIR=/root<br>
+SUSPSCAN_TEMP=/usr/local/var/lib/rkhunter/tmp<br><br>
+</strong>
+
+~# Instale também os seguintes ports para que o rkhunter funcione melhor...<br><br>
+
+<strong>lsof</strong><br>
+--------------------------------------------------------------<br>
+Lsof (LiSt Open Files) lists information about files that are<br>
+open by the running processes.<br>
+--------------------------------------------------------------<br><br>
+
+~# <code>cd /usr/ports/sysutils/lsof/</code><br>
+~# /usr/ports/sysutils/lsof# <code>make install clean</code><br><br>
+
+<strong>unhide</strong><br>
+--------------------------------------------------------------<br>
+Unhide is a forensic tool to find hidden processes and TCP/UDP<br>
+ports by rootkits / LKMs or by another hidden technique.<br>
+--------------------------------------------------------------<br><br>
+
+~# <code>cd /usr/ports/security/unhide/</code><br>
+~# /usr/ports/security/unhide# <code>make install clean</code><br><br>
+
+O rkhunter já foi adicionado no periodic, então ele já vai atualizar e rodar automaticamente, mas caso precise executar manualmente...<br><br>
+
+<code>rkhunter --update</code> (Check for updates to database files)<br>
+<code>rkhunter --propupd</code> (Update the entire file properties database)<br>
+<code>rkhunter --check</code> (Check the local system)<br><br><br></p>
+    </div>
+
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted"><a href="https://bitbucket.org/leonardobotelho/bsdhard">bitbucket.org/leonardobotelho/bsdhard</a></p>
+      </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
