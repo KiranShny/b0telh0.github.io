@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+		
+		<url>
+			<loc>http://www.bsdhard.com.br/</loc>
+		</url>
+		<url>
+			<loc>http://www.bsdhard.com.br/blowfish.html</loc>
+		</url>
+		<url>
+			<loc>http://www.bsdhard.com.br/chkrootkit.html</loc>
+		</url>
+		<url>
+			<loc>http://www.bsdhard.com.br/contact.html</loc>
+		</url>
+		<url>
+			<loc>http://www.bsdhard.com.br/portaudit.html</loc>
+		</url>
+		<url>
+			<loc>http://www.bsdhard.com.br/securelevel.html</loc>
+		</url>
+		<url>
+			<loc>http://www.bsdhard.com.br/toor.html</loc>
+		</url>
+		<url>
+			<loc>http://www.bsdhard.com.br/ttys.html</loc>
+		</url>
+
+	</urlset>
